@@ -1,0 +1,24 @@
+// Import Bootstrap Sass files
+@use "node_modules/bootstrap/scss/bootstrap";
+
+// Your Custom Styles
+$primary-color: #007bff;
+
+// Your Sass Variables, Mixins, Nested Selectors, etc.
+// ...
+
+// Custom Styling for Content
+.content {
+  padding: 20px;
+
+  .card {
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  // Other Custom Styles
+  // ...
+}
