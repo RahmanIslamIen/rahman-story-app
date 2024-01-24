@@ -1,17 +1,44 @@
-import {LitElement, html, customElement, property} from 'lit-element'
+import { LitElement, html, customElement, property, css } from "lit-element";
 
-@customElement('main-view')
+@customElement("main-view")
 class RandomView extends LitElement {
-  @property({type: Number}) count = 0
-
-  clickHandler() {
-    this.count++
-  }
-
   render() {
     return html`
-      <p>The count is: ${this.count}</p>
-      <button @click="${(this.clickHandler)}">Click</button>
-    `
+      <style>
+        .hero-card {
+          width: 99%;
+          margin: 5px;
+          background-color: #4caf50; /* Warna hijau */
+          position: relative;
+          border-radius: 10px;
+        }
+
+        /* Tambahan untuk membuat teks dan tombol terlihat di dalam card */
+        .content {
+          padding: 20px;
+          color: white;
+          text-align: center;
+        }
+
+        button {
+          padding: 10px 20px;
+          background-color: white;
+          color: #4caf50;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          border-radius: 5px;
+        }
+      </style>
+
+      <div class="hero-card">
+        <div class="glow"></div>
+        <div class="content">
+          <h1>Your Hero Card Title</h1>
+          <p>This is some cool content inside the hero card.</p>
+          <button>Click Me</button>
+        </div>
+      </div>
+    `;
   }
 }
