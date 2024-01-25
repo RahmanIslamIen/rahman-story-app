@@ -1,13 +1,13 @@
 import { LitElement, html, customElement, property, css } from "lit-element";
 
-@customElement("main-view")
+@customElement("hero-section")
 class heroSection extends LitElement {
   render() {
     return html`
       <style>
         .hero-card {
           width: 99%;
-          margin: 5px;
+          margin: 7px;
           background-color: #4caf50; /* Warna hijau */
           position: relative;
           border-radius: 10px;
