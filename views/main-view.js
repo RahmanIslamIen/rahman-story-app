@@ -72,9 +72,9 @@ class heroSection extends LitElement {
       <div class="hero-card">
         <div class="glow"></div>
         <div class="content">
-          <h1>Your Hero Card Title</h1>
-          <p>This is some cool content inside the hero card.</p>
-          <button>Click Me</button>
+          <h1>Cerita Unik Bagi Semua Orang</h1>
+          <p>mari buat cerita dari keseharian mu yang berwarna !</p>
+          <button>selamat datang</button>
         </div>
       </div>
     `;
