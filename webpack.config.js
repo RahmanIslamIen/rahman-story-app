@@ -3,7 +3,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/$/, to: "/index.html" },
+        { from: /tambah-story.html/, to: "/tambah-story.html" },
+        { from: /./, to: "/404.html" },
+      ],
+    },
   },
   mode: "development",
   entry: "./index.js",
@@ -29,12 +35,10 @@ module.exports = {
           },
         },
       },
-      // Aturan untuk mengelola file CSS Bootstrap
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
-      // Aturan untuk mengelola file JavaScript Bootstrap
       {
         test: /bootstrap\.js$/,
         use: {
@@ -58,6 +62,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       chunksSortMode: "none",
       template: "index.html",
+    }),
+    new HtmlWebpackPlugin({
+      chunksSortMode: "none",
+      filename: "tambah-story.html",
+      template: "tambah-story.html",
     }),
   ],
 };
