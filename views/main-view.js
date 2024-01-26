@@ -173,3 +173,40 @@ class AnimasiMouse extends LitElement {
     return html`<div class="cursor"></div>`;
   }
 }
+
+@customElement("floating-badge")
+class floatingBadge extends LitElement {
+  render() {
+    return html`
+      <style>
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+        }
+
+        .floating-btn {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #3498db;
+          color: #fff;
+          border: none;
+          padding: 10px 45px;
+          border-radius: 6px;
+          font-size: 16px;
+          cursor: pointer;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: background-color 0.3s ease;
+        }
+
+        .floating-btn:hover {
+          background-color: #2980b9;
+        }
+      </style>
+
+      <button class="floating-btn">
+        <marquee>selamat menambahkan cerita</marquee>
+      </button>
+    `;
+  }
+}
