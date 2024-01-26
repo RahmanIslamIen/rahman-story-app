@@ -30,6 +30,11 @@ class bagianNavbar extends LitElement {
               <li class="nav-item">
                 <a class="nav-link" href="tambah-story.html">Tambah Story</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="profil-developer.html"
+                  >Profil Developer</a
+                >
+              </li>
             </ul>
           </div>
         </div>

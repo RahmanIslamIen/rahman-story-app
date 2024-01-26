@@ -7,6 +7,7 @@ module.exports = {
       rewrites: [
         { from: /^\/$/, to: "/index.html" },
         { from: /tambah-story.html/, to: "/tambah-story.html" },
+        { from: /profil-developer.html/, to: "/profil-developer.html" },
         { from: /./, to: "/404.html" },
       ],
     },
@@ -67,6 +68,11 @@ module.exports = {
       chunksSortMode: "none",
       filename: "tambah-story.html",
       template: "tambah-story.html",
+    }),
+    new HtmlWebpackPlugin({
+      chunksSortMode: "none",
+      filename: "profil-developer.html",
+      template: "profil-developer.html",
     }),
   ],
 };
