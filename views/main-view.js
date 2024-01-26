@@ -92,7 +92,6 @@ class footer extends LitElement {
           color: white;
           padding: 20px;
           text-align: center;
-          position: fixed;
           bottom: 0;
           width: 100%;
         }
