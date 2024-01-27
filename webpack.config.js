@@ -13,7 +13,7 @@ module.exports = {
     },
   },
   mode: "development",
-  entry: "./index.js",
+  entry: ["./index.js", "./styles.css"],
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
@@ -39,6 +39,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.scss$/, // Add rule for SCSS files if needed
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /bootstrap\.js$/,

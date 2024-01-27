@@ -1,0 +1,13 @@
+// card.scss
+@use "sass:color";
+
+@mixin base {
+  background-color: color.adjust(#3498db, $lightness: 20%);
+  padding: 15px;
+  border-radius: 5px;
+
+  p {
+    color: color.adjust(#3498db, $lightness: -20%);
+    margin: 0;
+  }
+}

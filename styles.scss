@@ -1,0 +1,20 @@
+// styles.scss
+@use "card";
+
+.outer-card {
+  margin: 20px;
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 5px;
+
+  .semua-fitur {
+    display: flex;
+    justify-content: space-between;
+
+    .inner-card {
+      @include card.base;
+      width: 30%; // Sesuaikan lebar kartu sesuai kebutuhan
+      margin-top: 10px;
+    }
+  }
+}

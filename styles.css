@@ -1,0 +1,23 @@
+.outer-card {
+  margin: 20px;
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 5px;
+}
+.outer-card .semua-fitur {
+  display: flex;
+  justify-content: space-between;
+}
+.outer-card .semua-fitur .inner-card {
+  background-color: #8bc4ea;
+  padding: 15px;
+  border-radius: 5px;
+  width: 30%;
+  margin-top: 10px;
+}
+.outer-card .semua-fitur .inner-card p {
+  color: #196090;
+  margin: 0;
+}
+
+/*# sourceMappingURL=styles.css.map */
