@@ -88,9 +88,29 @@
             textElement.textContent = story.description;
             bodyElement.appendChild(textElement);
 
+            // Konversi format tanggal
+            const date = new Date(story.createdAt);
+            const formattedDate = formatDate(date);
+
+            const dateElement = document.createElement("p");
+            dateElement.classList.add("card-text");
+            dateElement.textContent = formattedDate;
+            bodyElement.appendChild(dateElement);
+
             cardElement.appendChild(bodyElement);
 
             return cardElement;
+          }
+
+          // Fungsi untuk mengonversi format tanggal
+          function formatDate(date) {
+            const options = {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            };
+            return new Intl.DateTimeFormat("id-ID", options).format(date);
           }
         });
       </script>
