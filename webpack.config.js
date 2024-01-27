@@ -13,7 +13,12 @@ module.exports = {
     },
   },
   mode: "development",
-  entry: ["./index.js", "./styles.css"],
+  entry: [
+    "./index.js",
+    "./bootstrap.bundle.min.js",
+    "./styles.css",
+    "./bootstrap.min.css",
+  ],
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
