@@ -18,3 +18,46 @@
     }
   }
 }
+
+$primary-color: #007bff;
+$danger-color: #dc3545;
+
+.container {
+  margin-top: 20px;
+}
+
+.card {
+  border-radius: 5px;
+  margin-bottom: 50px;
+
+  .card-img-top {
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  &-title {
+    color: $primary-color;
+  }
+
+  .card-text {
+    font-size: 16px;
+  }
+
+  .list-group-item {
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  .btn-danger {
+    background-color: $danger-color;
+    border-color: $danger-color;
+  }
+}
