@@ -13,7 +13,7 @@
 
     .inner-card {
       @include card.base;
-      width: 30%; // Sesuaikan lebar kartu sesuai kebutuhan
+      width: 30%;
       margin-top: 10px;
     }
   }

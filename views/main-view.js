@@ -186,7 +186,7 @@ class hubungiSaya extends LitElement {
         }
 
         .container > div {
-          width: 48%; /* Adjust as needed */
+          width: 48%;
         }
 
         .container > div:last-child {
