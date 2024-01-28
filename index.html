@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Rahman Story App</title>
     <style>
       html {
@@ -46,6 +48,99 @@
       </div>
     </nav>
     <!-- bagian navbar berakhir-->
+
+    <!-- carousel dimulai -->
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      style="width: 100%"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://c0.wallpaperflare.com/preview/255/288/958/banner-books-globe-board.jpg"
+            class="d-block w-100"
+            alt="..."
+            height="300px"
+            style="object-fit: cover"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Bebas Kreativitas</h5>
+            <p>tidak membatasi ide mu dalam mengembangkan cerita</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://c0.wallpaperflare.com/preview/255/288/958/banner-books-globe-board.jpg"
+            class="d-block w-100"
+            alt="..."
+            height="300px"
+            style="object-fit: cover"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>kelola publikasi mu</h5>
+            <p>
+              kamu bisa mambuat postingan mu dilihat oleh semua orang, kamu
+              saja, atau hanya beberapa orang.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://c0.wallpaperflare.com/preview/255/288/958/banner-books-globe-board.jpg"
+            class="d-block w-100"
+            alt="..."
+            height="300px"
+            style="object-fit: cover"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>buat iklan di story mu</h5>
+            <p>kamu bebas mengiklankan apa pun di story mu</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- carousel selesai -->
 
     <hero-section></hero-section>
 
@@ -125,7 +220,8 @@
             const formattedDate = formatDate(date);
 
             const dateElement = document.createElement("p");
-            dateElement.classList.add("card-text");
+            dateElement.classList.add("badge");
+            dateElement.classList.add("text-bg-secondary");
             dateElement.textContent = formattedDate;
             bodyElement.appendChild(dateElement);
 
@@ -174,10 +270,114 @@
       </div>
     </div>
 
+    <div
+      style="
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+      "
+    >
+      <h1>FAQ</h1>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              kenapa website ini dibuat ?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseOne"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              Rahman Story App dibuat dengan tujuan memberikan pengalaman unik
+              kepada pengguna dalam menjelajahi dan menikmati kisah-kisah
+              inspiratif dari kehidupan sehari-hari. Dengan menyajikan konten
+              yang menginspirasi dan mendalam, kami bertujuan untuk memberikan
+              nilai positif kepada pengguna, memotivasi mereka, dan mengajak
+              mereka untuk merenung tentang berbagai aspek kehidupan. Melalui
+              desain intuitif dan pengalaman pengguna yang menyenangkan, Rahman
+              Story App bertujuan untuk menjadi sumber inspirasi dan hiburan
+              yang dapat diakses dengan mudah oleh semua kalangan, menyebarkan
+              pesan-pesan positif dan mendorong pertumbuhan pribadi.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo"
+              aria-expanded="false"
+              aria-controls="flush-collapseTwo"
+            >
+              apakah ada membership ?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              Tidak ada program keanggotaan (membership) di Rahman Story App
+              saat ini. Kami berkomitmen untuk menyediakan akses gratis dan
+              setara kepada seluruh pengguna tanpa memerlukan biaya tambahan.
+              Meskipun demikian, kami terus berusaha meningkatkan pengalaman
+              pengguna dengan menyajikan konten yang bermutu tinggi dan layanan
+              yang responsif bagi semua orang yang mengunjungi website kami.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree"
+              aria-expanded="false"
+              aria-controls="flush-collapseThree"
+            >
+              bisakah merequest fitur baru ?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              Tentu saja! Kami sangat menyambut setiap masukan dan saran dari
+              pengguna Rahman Story App. Jika Anda memiliki ide atau keinginan
+              untuk fitur baru yang dapat meningkatkan pengalaman pengguna,
+              silakan kirimkan permintaan fitur Anda. Kami berkomitmen untuk
+              terus memperbarui dan meningkatkan aplikasi kami berdasarkan umpan
+              balik berharga dari pengguna setia kami. Kami percaya bahwa dengan
+              kolaborasi antara pengguna dan tim pengembangan, kita dapat
+              menciptakan pengalaman yang lebih baik dan memuaskan bagi seluruh
+              komunitas Rahman Story App.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hubungi-saya></hubungi-saya>
     <bagian-footer></bagian-footer>
     <floating-badge></floating-badge>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

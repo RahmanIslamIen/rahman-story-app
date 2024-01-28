@@ -171,3 +171,68 @@ class floatingBadge extends LitElement {
     `;
   }
 }
+
+@customElement("hubungi-saya")
+class hubungiSaya extends LitElement {
+  render() {
+    return html`
+      <style>
+        .container {
+          display: flex;
+          justify-content: space-between;
+          background-color: #198754;
+          padding: 60px;
+          box-sizing: border-box;
+        }
+
+        .container > div {
+          width: 48%; /* Adjust as needed */
+        }
+
+        .container > div:last-child {
+          text-align: right;
+        }
+
+        h4 {
+          color: white;
+        }
+
+        p {
+          color: white;
+        }
+
+        .outline-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          border: 2px solid #007bff;
+          color: #007bff;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s;
+        }
+
+        .outline-btn:hover {
+          background-color: #007bff;
+          color: #fff;
+        }
+      </style>
+
+      <div class="container">
+        <div>
+          <h4>Tentang Website</h4>
+          <p>
+            web yang dibuat untuk mempublikasi kan ceritamu dengan tampilan yang
+            memukau. seteiap story yang kamu tulis akan menjadi konten unik yang
+            akan dilihat baik diri kamu sendri ataupun orang lain.
+          </p>
+        </div>
+        <div>
+          <button type="button" class="outline-btn">Hubungi Saya</button>
+        </div>
+      </div>
+    `;
+  }
+}
