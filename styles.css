@@ -20,15 +20,23 @@
   margin: 0;
 }
 
-.container {
+.containerProfil {
   margin-top: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.card {
+.cardProfil {
   border-radius: 5px;
   margin-bottom: 50px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px;
 }
-.card .card-img-top {
+.cardProfil .cardProfil-img-top {
+  margin-left: auto;
+  margin-right: auto;
   width: 350px;
   height: 350px;
   object-fit: contain;
@@ -36,20 +44,20 @@
   margin: 0 auto;
   margin-top: 10px;
 }
-.card-title {
+.cardProfil-title {
   color: #007bff;
 }
-.card .card-text {
+.cardProfil .cardProfil-text {
   font-size: 16px;
 }
-.card .list-group-item {
+.cardProfil .list-group-item {
   font-size: 14px;
 }
-.card .btn-primary {
+.cardProfil .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
 }
-.card .btn-danger {
+.cardProfil .btn-danger {
   background-color: #dc3545;
   border-color: #dc3545;
 }
