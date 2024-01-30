@@ -22,15 +22,23 @@
 $primary-color: #007bff;
 $danger-color: #dc3545;
 
-.container {
+.containerProfil {
   margin-top: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.card {
+.cardProfil {
   border-radius: 5px;
   margin-bottom: 50px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px;
 
-  .card-img-top {
+  .cardProfil-img-top {
+    margin-left: auto;
+    margin-right: auto;
     width: 350px;
     height: 350px;
     object-fit: contain;
@@ -43,7 +51,7 @@ $danger-color: #dc3545;
     color: $primary-color;
   }
 
-  .card-text {
+  .cardProfil-text {
     font-size: 16px;
   }
 
