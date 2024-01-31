@@ -83,5 +83,15 @@ module.exports = {
       filename: "profil-developer.html",
       template: "profil-developer.html",
     }),
+    new HtmlWebpackPlugin({
+      chunksSortMode: "none",
+      filename: "register.html",
+      template: "register.html",
+    }),
+    new HtmlWebpackPlugin({
+      chunksSortMode: "none",
+      filename: "login.html",
+      template: "login.html",
+    }),
   ],
 };
