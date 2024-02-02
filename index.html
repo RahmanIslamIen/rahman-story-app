@@ -152,15 +152,17 @@
 
     <!-- bagian isi konten dimulai-->
     <div class="container-fluid">
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <div class="content"></div>
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           const dataUrl =
             "https://raw.githubusercontent.com/dicodingacademy/a565-webtools-labs/099-shared-files/proyek-awal/DATA.json";
 
-          fetch(dataUrl)
-            .then((response) => response.json())
-            .then((data) => {
+          axios
+            .get(dataUrl)
+            .then((response) => {
+              const data = response.data;
               if (!data.error) {
                 renderDashboard(data.listStory);
               } else {

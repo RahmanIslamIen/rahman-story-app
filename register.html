@@ -3,94 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-
+    <title>Register Page</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
   </head>
+
   <body>
     <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <h1 class="mb-4">Registration</h1>
-
-          <form id="registrationForm">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                name="name"
-                required
-              />
-            </div>
-
-            <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                required
-              />
-            </div>
-
-            <div class="mb-3">
-              <label for="password" class="form-label">Password:</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                name="password"
-                required
-                minlength="8"
-              />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Register</button>
-          </form>
+      <h2>Register</h2>
+      <form id="registerForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+          />
         </div>
-      </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            minlength="8"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
     </div>
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script>
-      const API_ENDPOINT = "https://story-api.dicoding.dev/v1";
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
 
-      const registrationForm = document.getElementById("registrationForm");
+          // Collect user input
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
 
-      registrationForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+          // Create user object
+          const user = {
+            name: name,
+            email: email,
+            password: password,
+          };
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        registerUser(name, email, password);
-      });
-
-      const registerUser = async (name, email, password) => {
-        try {
-          const response = await axios.post(`${API_ENDPOINT}/register`, {
-            name,
-            email,
-            password,
-          });
-
-          console.log(response.data);
-          // You can redirect or perform any action after successful registration
-        } catch (error) {
-          console.error("Registration failed:", error.response.data);
-        }
-      };
+          // Call the register API
+          fetch("https://story-api.dicoding.dev/v1/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error === false) {
+                alert(data.message);
+                // Redirect or perform other actions upon successful registration
+              } else {
+                alert(
+                  "Registration failed. Please check your input and try again."
+                );
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert(
+                "An error occurred while processing your request. Please try again later."
+              );
+            });
+        });
     </script>
   </body>
 </html>
