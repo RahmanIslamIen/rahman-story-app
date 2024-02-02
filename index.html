@@ -48,7 +48,7 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <a class="btn btn-outline-danger" href="#">Login</a>
+            <div id="userName" class=".tampilUser"></div>
           </form>
         </div>
       </div>
@@ -387,5 +387,31 @@
     <floating-badge></floating-badge>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const userName = getCookie("user_name");
+
+        if (userName) {
+          document.getElementById(
+            "userName"
+          ).innerText = `Selamat Datang, ${userName}!`;
+        } else {
+          document.getElementById(
+            "userName"
+          ).innerHTML = `<a class="btn btn-outline-danger" href="login.html">Login</a>`;
+        }
+
+        function getCookie(name) {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + "=")) {
+              return cookie.substring(name.length + 1);
+            }
+          }
+          return null;
+        }
+      });
+    </script>
   </body>
 </html>

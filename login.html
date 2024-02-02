@@ -66,8 +66,15 @@
             .then((response) => {
               const data = response.data;
               if (data.error === false) {
-                alert(data.message);
+                // Set cookie with user name
+                document.cookie = `user_name=${
+                  data.loginResult.name
+                }; expires=${new Date(
+                  Date.now() + 86400000
+                ).toUTCString()}; path=/`;
+
                 // Redirect or perform other actions upon successful login
+                window.location.href = "index.html";
               } else {
                 alert("Login failed. Please check your email and password.");
               }
