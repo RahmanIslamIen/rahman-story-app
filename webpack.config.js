@@ -10,6 +10,7 @@ module.exports = {
         { from: /profil-developer.html/, to: "/profil-developer.html" },
         { from: /login.html/, to: "/login.html" },
         { from: /register.html/, to: "/register.html" },
+        { from: /tambah-story.html/, to: "/tambah-story.html" },
         { from: /./, to: "/404.html" },
       ],
     },

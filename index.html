@@ -154,11 +154,14 @@
     <div class="container-fluid">
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <div class="content"></div>
-      <div class="text-center mt-5">
-        <div class="spinner-border" role="status" id="loadingSpinner">
-          <span class="sr-only">Loading...</span>
+
+      <center>
+        <div class="text-center mt-5">
+          <div class="spinner-border" role="status" id="loadingSpinner">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
-      </div>
+      </center>
 
       <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -410,7 +413,12 @@
         if (userName) {
           document.getElementById(
             "userName"
-          ).innerText = `Selamat Datang, ${userName}!`;
+          ).innerHTML = `Selamat Datang, ${userName}! <a id="logoutBtn" class="btn btn-outline-danger">Logout</a>`;
+          document
+            .getElementById("logoutBtn")
+            .addEventListener("click", function () {
+              logout();
+            });
         } else {
           document.getElementById(
             "userName"
@@ -426,6 +434,12 @@
             }
           }
           return null;
+        }
+
+        function logout() {
+          document.cookie =
+            "user_name=; expires=Thu, 17 Aug 1945 00:00:00 UTC; path=/;";
+          window.location.href = "login.html";
         }
       });
     </script>
