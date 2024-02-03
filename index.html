@@ -154,6 +154,12 @@
     <div class="container-fluid">
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <div class="content"></div>
+      <div class="text-center mt-5">
+        <div class="spinner-border" role="status" id="loadingSpinner">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           const dataUrl =
@@ -161,7 +167,7 @@
           const contentContainer = document.querySelector(".content");
           const loadingSpinner = document.getElementById("loadingSpinner");
 
-          // Tampilkan spinner saat melakukan fetch
+          // loading spinner pas fetch data
           loadingSpinner.style.display = "block";
 
           axios
@@ -174,10 +180,15 @@
                 console.error(data.message);
               }
             })
-            .catch((error) => console.error("Error fetching data:", error));
+            .catch((error) => console.error("Error fetching data:", error))
+            .finally(() => {
+              // hide jika fetch udah selesai
+              loadingSpinner.style.display = "none";
+            });
 
           function renderDashboard(stories) {
-            const contentContainer = document.querySelector(".content");
+            // Hapus elemen loading pas data udah keterima
+            loadingSpinner.style.display = "none";
 
             if (stories && stories.length > 0) {
               const rowElement = document.createElement("div");
