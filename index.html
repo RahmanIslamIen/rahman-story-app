@@ -48,7 +48,7 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <div id="userName" class=".tampilUser"></div>
+            <div id="userName"></div>
           </form>
         </div>
       </div>
@@ -298,6 +298,14 @@
       const userId = localStorage.getItem("userId");
       const name = localStorage.getItem("name");
       const token = localStorage.getItem("token");
+
+      if (name !== null) {
+        document.getElementById("userName").innerHTML = `${name}`;
+      } else {
+        document.getElementById(
+          "userName"
+        ).innerHTML = `<a href="login.html" class="btn btn-outline-danger">Login</a>`;
+      }
 
       if (userId && name && token) {
         document.getElementById("userId").innerText = userId;
