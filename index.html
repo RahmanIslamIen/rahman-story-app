@@ -152,123 +152,10 @@
 
     <!-- bagian isi konten dimulai-->
     <div class="container-fluid">
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <div class="content"></div>
-
-      <center>
-        <div class="text-center mt-5">
-          <div class="spinner-border" role="status" id="loadingSpinner">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-      </center>
-
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const dataUrl =
-            "https://raw.githubusercontent.com/dicodingacademy/a565-webtools-labs/099-shared-files/proyek-awal/DATA.json";
-          const contentContainer = document.querySelector(".content");
-          const loadingSpinner = document.getElementById("loadingSpinner");
-
-          // loading spinner pas fetch data
-          loadingSpinner.style.display = "block";
-
-          axios
-            .get(dataUrl)
-            .then((response) => {
-              const data = response.data;
-              if (!data.error) {
-                renderDashboard(data.listStory);
-              } else {
-                console.error(data.message);
-              }
-            })
-            .catch((error) => console.error("Error fetching data:", error))
-            .finally(() => {
-              // hide jika fetch udah selesai
-              loadingSpinner.style.display = "none";
-            });
-
-          function renderDashboard(stories) {
-            // Hapus elemen loading pas data udah keterima
-            loadingSpinner.style.display = "none";
-
-            if (stories && stories.length > 0) {
-              const rowElement = document.createElement("div");
-              rowElement.classList.add(
-                "row",
-                "row-cols-1",
-                "row-cols-md-4",
-                "g-4",
-                "m-2"
-              );
-
-              stories.forEach((story) => {
-                const colElement = document.createElement("div");
-                colElement.classList.add("col");
-
-                const cardElement = createCardElement(story);
-                colElement.appendChild(cardElement);
-
-                rowElement.appendChild(colElement);
-              });
-
-              contentContainer.appendChild(rowElement);
-            } else {
-              contentContainer.innerHTML = "<p>No stories available.</p>";
-            }
-          }
-
-          function createCardElement(story) {
-            const cardElement = document.createElement("div");
-            cardElement.classList.add("card");
-
-            const imageElement = document.createElement("img");
-            imageElement.src = story.photoUrl;
-            imageElement.alt = story.name;
-            imageElement.classList.add("card-img-top");
-            cardElement.appendChild(imageElement);
-
-            const bodyElement = document.createElement("div");
-            bodyElement.classList.add("card-body");
-
-            const titleElement = document.createElement("h5");
-            titleElement.classList.add("card-title");
-            titleElement.textContent = story.name;
-            bodyElement.appendChild(titleElement);
-
-            const textElement = document.createElement("p");
-            textElement.classList.add("card-text");
-            textElement.textContent = story.description;
-            bodyElement.appendChild(textElement);
-
-            // Konversi format tanggal
-            const date = new Date(story.createdAt);
-            const formattedDate = formatDate(date);
-
-            const dateElement = document.createElement("p");
-            dateElement.classList.add("badge");
-            dateElement.classList.add("text-bg-secondary");
-            dateElement.textContent = formattedDate;
-            bodyElement.appendChild(dateElement);
-
-            cardElement.appendChild(bodyElement);
-
-            return cardElement;
-          }
-
-          // Fungsi untuk mengonversi format tanggal
-          function formatDate(date) {
-            const options = {
-              weekday: "long",
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            };
-            return new Intl.DateTimeFormat("id-ID", options).format(date);
-          }
-        });
-      </script>
+      <p hidden>User ID: <span id="userId"></span></p>
+      <p hidden>Name: <span id="name"></span></p>
+      <p hidden>Token: <span id="token"></span></p>
+      <div id="storiesList"></div>
     </div>
     <!-- bagian isi konten berakhir-->
 
@@ -406,42 +293,66 @@
     <floating-badge></floating-badge>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const userName = getCookie("user_name");
+      const userId = localStorage.getItem("userId");
+      const name = localStorage.getItem("name");
+      const token = localStorage.getItem("token");
 
-        if (userName) {
-          document.getElementById(
-            "userName"
-          ).innerHTML = `Selamat Datang, ${userName}! <a id="logoutBtn" class="btn btn-outline-danger">Logout</a>`;
-          document
-            .getElementById("logoutBtn")
-            .addEventListener("click", function () {
-              logout();
+      if (userId && name && token) {
+        document.getElementById("userId").innerText = userId;
+        document.getElementById("name").innerText = name;
+        document.getElementById("token").innerText = token;
+
+        axios
+          .get("https://story-api.dicoding.dev/v1/stories", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((response) => {
+            const listStory = response.data.listStory;
+            const storiesListDiv = document.getElementById("storiesList");
+
+            // Add Bootstrap grid classes to the container
+            storiesListDiv.classList.add(
+              "row",
+              "row-cols-1",
+              "row-cols-md-4",
+              "g-4"
+            );
+
+            listStory.forEach((story) => {
+              // Create a column div for each card
+              const storyDiv = document.createElement("div");
+              storyDiv.classList.add("col");
+
+              storyDiv.innerHTML = `
+            <div class="card">
+              <img src="${story.photoUrl}" class="card-img-top" alt="${
+                story.name
+              }">
+              <div class="card-body">
+                <h3 class="card-title">${story.name}</h3>
+                <p class="card-text">${story.description}</p>
+                <p class="card-text"><small class="text-muted">Created At: ${new Date(
+                  story.createdAt
+                ).toLocaleString()}</small></p>
+                <p class="card-text">Location: ${story.lat}, ${story.lon}</p>
+              </div>
+            </div>
+          `;
+
+              // Append the column to the row
+              storiesListDiv.appendChild(storyDiv);
             });
-        } else {
-          document.getElementById(
-            "userName"
-          ).innerHTML = `<a class="btn btn-outline-danger" href="login.html">Login</a>`;
-        }
-
-        function getCookie(name) {
-          const cookies = document.cookie.split(";");
-          for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.startsWith(name + "=")) {
-              return cookie.substring(name.length + 1);
-            }
-          }
-          return null;
-        }
-
-        function logout() {
-          document.cookie =
-            "user_name=; expires=Thu, 17 Aug 1945 00:00:00 UTC; path=/;";
-          window.location.href = "login.html";
-        }
-      });
+          })
+          .catch((error) => {
+            console.error("Error fetching stories:", error);
+          });
+      } else {
+        window.location.href = "login.html";
+      }
     </script>
   </body>
 </html>
