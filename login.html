@@ -7,8 +7,11 @@
     <title>Login</title>
   </head>
   <body>
-    <div class="container">
-      <form id="loginForm" class="needs-validation mt-5" novalidate>
+    <div class="container mt-5">
+      <center>
+        <h1>Login Rahman Story App</h1>
+      </center>
+      <form id="loginForm" class="needs-validation mt-3" novalidate>
         <div class="mb-3">
           <label for="email" class="form-label">Email:</label>
           <input
@@ -32,6 +35,11 @@
             required
           />
           <div class="invalid-feedback">Please enter your password.</div>
+        </div>
+        <div class="mb-3">
+          <a href="register.html" class="m-2"
+            >register jika tidak punya akun ...</a
+          >
         </div>
         <button type="button" class="btn btn-primary" onclick="login()">
           Login
